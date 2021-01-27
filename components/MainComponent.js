@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import React,{useEffect} from 'react';
+import React,{Component,useEffect} from 'react';
 import { StyleSheet, Text, View,Button } from 'react-native';
 import Home from "./HomeComponent";
 import Menu  from "./MenuComponent";
@@ -108,22 +108,26 @@ const HomeNavigator = ({navigation})=>{
   )
 }
 
- function Main(props) {
-  const Drawer = createDrawerNavigator();
-  
+ class Main extends Component {
+   constructor(props){
+     super(props);
+   }
+   render(){
+    const Drawer = createDrawerNavigator();
+    return (
+      <NavigationContainer>
+          <Drawer.Navigator initialRouteName="Home" drawerContent={props=><Sidebar {...props} />} >
+            <Drawer.Screen name="Home" component={HomeNavigator} options={{
+              drawerIcon:({focused,color,size})=>(<Icon name="home" style={{fontSize:size,color:'color'}} />)
+            }}/>
+            <Drawer.Screen name="Menu" component={MenuNavigator} />
+            <Drawer.Screen name="About" component={AboutNavigator} />
+            <Drawer.Screen name="Contact" component={ContactNavigator}/>
+          </Drawer.Navigator>
+      </NavigationContainer>
+    );
+   }
 
-  return (
-    <NavigationContainer>
-        <Drawer.Navigator initialRouteName="Home" drawerContent={props=><Sidebar {...props} />} >
-          <Drawer.Screen name="Home" component={HomeNavigator} options={{
-            drawerIcon:({focused,color,size})=>(<Icon name="home" style={{fontSize:size,color:'color'}} />)
-          }}/>
-          <Drawer.Screen name="Menu" component={MenuNavigator} />
-          <Drawer.Screen name="About" component={AboutNavigator} />
-          <Drawer.Screen name="Contact" component={ContactNavigator}/>
-        </Drawer.Navigator>
-    </NavigationContainer>
-  );
 }
 export default Main;
 

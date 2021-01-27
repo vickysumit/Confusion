@@ -22,9 +22,7 @@ import  Main  from "./components/MainComponent";
 
   
   return (
-  
-      <Main />
-   
+      <Main /> 
   );
 }
 export default App;
