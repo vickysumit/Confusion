@@ -1,21 +1,31 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React,{useEffect} from 'react';
+import { StyleSheet, Text, View,Button } from 'react-native';
+import Home from "./components/HomeComponent";
+import Menu  from "./components/MenuComponent";
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import DishDetail from "./components/DishdetailsComponent";
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import About from "./components/AboutComponent";
+import Contact from "./components/ContactComponent";
+import { Icon } from "react-native-elements";
+import Sidebar from './components/CustomDrawer';
+import { Provider } from "react-redux";
+import { connect } from 'react-redux';
+import  Main  from "./components/MainComponent";
 
-export default function App() {
+
+
+ function App(props) {
+ 
+
+  
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+  
+      <Main />
+   
   );
 }
+export default App;
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
